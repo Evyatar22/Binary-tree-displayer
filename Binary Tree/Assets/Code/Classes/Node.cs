@@ -8,7 +8,9 @@ public class Node<T>
     private T value;
     private GameObject MyGO;
 
-    public Node(T value)
+    public Node<T> Parent { get; }
+
+    public Node(T value, Node<T> parent = null)
     {
         this.value = value;
         this.next = null;

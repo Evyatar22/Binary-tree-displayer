@@ -152,9 +152,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04092f5fe4571714da481ccbdad2c95f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CirclePrefab: {fileID: 5409292714465928640, guid: be2a7d479ea2ab943adf4161eb30c3c0, type: 3}
-  canvas: {fileID: 1618894398}
-  ConnetorsHoldef: {fileID: 317187123}
+  CirclePrefab: {fileID: -7690168444491935041, guid: be2a7d479ea2ab943adf4161eb30c3c0, type: 3}
+  canvas: {fileID: 1618894401}
+  ConnetorsHoldef: {fileID: 317187124}
+  levels: 3
+  spacing: 55
 --- !u!4 &260243728
 Transform:
   m_ObjectHideFlags: 0
@@ -163,7 +165,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 260243726}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.4831128, y: 1.7493074, z: -0.7526912}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
