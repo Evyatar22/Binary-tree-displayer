@@ -117,7 +117,7 @@ public class DisplayNode : MonoBehaviour
 
     private static void CreateRndTree(int levels, BinNode<int> rootNode)
     {
-        if (levels < 0)
+        if (levels <= 0)
         {
             return;
         }
@@ -133,11 +133,8 @@ public class DisplayNode : MonoBehaviour
 
     public void CrateRndBG4Class(int levels, BinNode<BG4Class> save_node)
     {
-        levels--;
-
-        if (levels < 0)
+        if (levels <= 0)
         {
-            save_node.SetChildren(null, null);
             return;
         }
 
@@ -145,8 +142,8 @@ public class DisplayNode : MonoBehaviour
         var right = new BinNode<BG4Class>(new BG4Class(Random.Range(0, 10), Random.Range(10, 20)));
         save_node.SetChildren(left, right);
 
-        CrateRndBG4Class(levels, left);
-        CrateRndBG4Class(levels, right);
+        CrateRndBG4Class(levels - 1, left);
+        CrateRndBG4Class(levels - 1, right);
     }
 
     #endregion
