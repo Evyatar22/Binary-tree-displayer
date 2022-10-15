@@ -1,63 +1,47 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BinNode<T>
 {
-    private BinNode<T> left;
-    private BinNode<T> right;
-    private T value;
-    private GameObject MyGO;
+    public T Value { get; }
+    public BinNode<T> Parent { get; }
+    public BinNode<T> Left { get; private set; }
+    public BinNode<T> Right { get; private set; }
+    public Circle Circle { get; private set; }
+    public bool HasRight => Right != null;
+    public bool HasLeft => Left != null;
 
-    public BinNode(T value)
+    public BinNode(T value, BinNode<T> parent = null)
     {
-        this.value = value;
-        this.right = null;
-        this.left = null;
-    }
-
-    public T GetValue()
-    {
-       return value;
-    }
-    public void SetValue(T value)
-    {
-        this.value = value;
+        this.Value = value;
+        this.Parent = parent;
     }
 
-    public BinNode<T> GetLeft() 
+    public int GetLevel()
     {
-            return left;
-    }
-    public void SetLeft(BinNode<T> left)
-    {
-        this.left = left;
+        if (Parent == null)
+        {
+            return 0;
+        }
+
+        return 1 + Parent.GetLevel();
     }
 
-    public BinNode<T> GetRight()
+    public int GetChildLevels()
     {
-        return right;
-    }
-    public void SetRight(BinNode<T> right)
-    {
-        this.right = right;
+        var rightChildLevels = Right == null ? 0 : 1 + Right.GetChildLevels();
+        var leftChildLevels = Left == null ? 0 : 1 + Left.GetChildLevels();
+
+        return Mathf.Max(rightChildLevels, leftChildLevels);
     }
 
-    public bool HasRight()
+    public void SetChildren(BinNode<T> left, BinNode<T> right)
     {
-        return this.right != null;
-    }
-    public bool HasLeft()
-    {
-        return this.left != null;
-    }
-    public GameObject GetGO()
-    {
-        return MyGO;
-    }
-    public void SetGO(GameObject MyGO)
-    {
-        this.MyGO = MyGO;
+        Left = left;
+        Right = right;
     }
 
+    public void SetGO(Circle circle)
+    {
+        Circle = circle;
+    }
 }
